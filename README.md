@@ -1,76 +1,39 @@
 # 💪 FitLog
 
-FitLog is a dark, no-nonsense workout library and planning web application. Users can browse workouts, view workout details, add exercises to today's plan, save workouts for later, and manage their workout plan.
+FitLog is a dark, no-nonsense workout library and planning web application. Browse workouts, explore detailed exercises, build your daily plan, save workouts for later, and track your progress — all in one place.
 
 ## 🔗 Links
 
-* **Live Website:** `YOUR_LIVE_LINK_HERE`
-* **GitHub Repository:** `YOUR_GITHUB_REPOSITORY_LINK_HERE`
-
----
+| 🌐 Live Website | 💻 GitHub Repository |
+|:---:|:---:|
+| [**Visit Website →**](https://fitlog-library.netlify.app/) | [**View Source →**](https://github.com/ahmed-shahriar04/b14-a06/) |
 
 ## 🛠️ Technologies Used
 
-* Next.js
-* React
-* JavaScript (JSX)
-* Tailwind CSS
-* React Hot Toast
-* Lucide React
-* FitLog REST API
-
----
+| ⚛️ Frontend | 🎨 Styling & UI | 🔌 API & Tools |
+|:---:|:---:|:---:|
+| Next.js | Tailwind CSS | FitLog REST API |
+| React | Lucide React | React Hot Toast |
+| JavaScript (JSX) | — | — |
 
 ## ✨ Features
 
-* Browse workouts from the FitLog API.
-* View detailed information for each workout.
-* Add workouts to Today's Plan.
-* Save workouts for later.
-* Manage Today's Plan and Saved workouts.
-* Track exercises, total minutes, and calories.
-* Mark planned workouts as done.
-* Remove workouts from the plan.
-* Search and sort workouts.
-* Responsive design for mobile, tablet, and desktop.
-* Workout plan and saved data persist using localStorage.
+| 🏋️ Workout | 📋 Planning | 📊 Tracking |
+|:---:|:---:|:---:|
+| Browse workouts from the FitLog API | Add workouts to Today's Plan | Track exercises |
+| View detailed workout information | Save workouts for later | Track total workout minutes |
+| Search and sort workouts | Manage Today's Plan | Track calories |
+| — | Manage saved workouts | Mark workouts as completed |
+| — | Remove workouts from the plan | — |
 
----
+| 📱 Responsive Design | 💾 Data Persistence |
+|:---:|:---:|
+| Fully responsive for mobile, tablet, and desktop | Workout plans and saved workouts persist using `localStorage` |
 
-## 🖥️ Desktop Screenshots
+## 📸 Project Preview
 
-### Home Page
-
-![Home Page](DESKTOP_HOME_IMAGE_LINK)
-
-### Workout Details Page
-
-![Workout Details](DESKTOP_DETAILS_IMAGE_LINK)
-
-### My Plan — Empty
-
-![My Plan Empty](DESKTOP_MY_PLAN_EMPTY_IMAGE_LINK)
-
-### My Plan — Today's Plan
-
-![My Plan Today's Plan](DESKTOP_MY_PLAN_TODAYS_PLAN_IMAGE_LINK)
-
----
-
-## 📱 Mobile Screenshots
-
-### Home Page
-
-![Mobile Home Page](MOBILE_HOME_IMAGE_LINK)
-
-### Workout Details Page
-
-![Mobile Workout Details](MOBILE_DETAILS_IMAGE_LINK)
-
-### My Plan — Empty
-
-![Mobile My Plan Empty](MOBILE_MY_PLAN_EMPTY_IMAGE_LINK)
-
-### My Plan — Today's Plan
-
-![Mobile My Plan Today's Plan](MOBILE_MY_PLAN_TODAYS_PLAN_IMAGE_LINK)
+| 🖥️ Desktop | 📱 Mobile |
+|:---:|:---:|
+| <img src="https://i.postimg.cc/k5ms042b/desktop-banner.png" width="650" alt="FitLog Desktop Preview"/> | <img src="https://i.postimg.cc/Jh5xMLXg/mobile-banner.png" width="280" alt="FitLog Mobile Preview"/> |
+| **Desktop Experience** | **Mobile Experience** |
+| A complete desktop experience for browsing workouts, managing daily plans, saving workouts, and tracking progress. | A responsive mobile experience designed for browsing workouts and managing daily activities on the go. |
