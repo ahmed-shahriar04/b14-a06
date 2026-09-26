@@ -3,12 +3,16 @@ import { notFound } from "next/navigation";
 import DetailsActions from "../../../components/DetailsActions";
 import { formatDuration, formatCalories } from "../../../utils/format";
 
+export const dynamicParams = true;
+
 export async function generateStaticParams() {
   try {
-    const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
+    const res = await fetch("https://api.abcz.workers.dev/api/fitlog", {
+      next: { revalidate: 3600 },
+    });
     if (!res.ok) return [];
-    const data = await res.json();
-    const workouts = Array.isArray(data) ? data : data.data || [];
+    const json = await res.json();
+    const workouts = Array.isArray(json) ? json : json.data || [];
     return workouts.map((w) => ({
       id: String(w.id),
     }));
@@ -22,10 +26,17 @@ async function getWorkoutDetails(id) {
     const res = await fetch(`https://api.abcz.workers.dev/api/fitlog/${id}`, {
       cache: "no-store",
     });
-    if (res.status === 404 || !res.ok) {
+
+    if (!res.ok) return null;
+
+    const data = await res.json();
+    const workout = data.data || data;
+
+    if (!workout || (!workout.name && !workout.title)) {
       return null;
     }
-    return await res.json();
+
+    return workout;
   } catch (e) {
     return null;
   }
@@ -33,13 +44,18 @@ async function getWorkoutDetails(id) {
 
 export default async function WorkoutDetailsPage({ params }) {
   const { id } = await params;
-  const rawData = await getWorkoutDetails(id);
+  const numId = Number(id);
 
-  if (!rawData) {
+  if (isNaN(numId) || numId > 12 || numId < 1) {
     notFound();
   }
 
-  const workout = rawData.data || rawData;
+  const workout = await getWorkoutDetails(id);
+
+  if (!workout) {
+    notFound();
+  }
+
   const categories = workout.muscleGroups || workout.category || [];
 
   const specs = [
@@ -56,16 +72,16 @@ export default async function WorkoutDetailsPage({ params }) {
   ];
 
   return (
-    <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-10 lg:py-16">
+    <div className="max-w-[1440px] mx-auto px-4 sm:px-6 py-10 lg:py-16 font-(family-name:--font-inter)">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-start">
-        <div className="relative w-full aspect-[4/5] rounded-3xl overflow-hidden bg-[#14161b] border border-[#1f222b] shadow-2xl">
+        <div className="relative w-full aspect-4/5 rounded-3xl overflow-hidden bg-[#14161b] border border-[#1f222b] shadow-2xl">
           <Image
             src={workout.image || "/banner.png"}
             alt={workout.name || workout.title || "Workout Details"}
             fill
             priority
             sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
+            className="object-cover object-top"
           />
         </div>
 
@@ -108,17 +124,17 @@ export default async function WorkoutDetailsPage({ params }) {
           </div>
 
           {workout.instructions && workout.instructions.length > 0 && (
-            <div className="space-y-3 pt-1">
-              <h2 className="font-heading text-sm font-bold uppercase tracking-wider text-white">
+            <div className="space-y-4 pt-2">
+              <h2 className="font-heading text-lg sm:text-xl font-bold uppercase tracking-wider text-white">
                 INSTRUCTIONS
               </h2>
-              <ol className="space-y-2.5 text-xs sm:text-sm text-gray-300">
+              <ol className="space-y-3.5 text-base sm:text-base text-gray-300">
                 {workout.instructions.map((step, index) => (
                   <li
                     key={index}
-                    className="flex items-start gap-2.5 leading-relaxed"
+                    className="flex items-start gap-3 leading-relaxed"
                   >
-                    <span className="text-gray-400 font-medium select-none">
+                    <span className="text-[#ccff00] font-bold select-none text-base">
                       {index + 1}.
                     </span>
                     <span>{step}</span>
