@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowLeft } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -28,9 +29,10 @@ export default function NotFound() {
 
       <Link
         href="/"
-        className="inline-block bg-[#ccff00] text-black font-semibold text-xs tracking-wider px-6 py-3 rounded-lg uppercase hover:opacity-90 transition"
+        className="inline-flex items-center gap-2 bg-[#ccff00] text-black font-semibold text-xs tracking-wider px-6 py-3 rounded-lg uppercase hover:opacity-90 transition group"
       >
-        Back to workouts
+        <ArrowLeft className="w-4 h-4 stroke-[2.5] group-hover:-translate-x-0.5 transition-transform" />
+        <span>Back to workouts</span>
       </Link>
     </div>
   );
