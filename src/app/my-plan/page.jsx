@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Clock, Flame, Star, Check, X, ChevronDown } from "lucide-react";
+import { Clock, Flame, Star, Check, X, ChevronDown, ArrowRight } from "lucide-react";
 import { useWorkout } from "../../context/WorkoutContext";
 import {
   formatDuration,
@@ -149,9 +149,10 @@ export default function MyPlanPage() {
           <div className="pt-2">
             <Link
               href="/"
-              className="inline-block bg-[#ccff00] hover:bg-[#b8e600] text-black font-extrabold text-xs tracking-wider px-6 py-3 rounded-3xl uppercase transition shadow-md shadow-[#ccff00]/10"
+              className="inline-flex items-center gap-2 bg-[#ccff00] hover:bg-[#b8e600] text-black font-extrabold text-xs tracking-wider px-6 py-3 rounded-3xl uppercase transition shadow-md shadow-[#ccff00]/10 group"
             >
-              Go to workouts
+              <span>Go to workouts</span>
+              <ArrowRight className="w-4 h-4 stroke-[2.5] group-hover:translate-x-0.5 transition-transform" />
             </Link>
           </div>
         </div>
