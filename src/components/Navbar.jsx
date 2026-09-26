@@ -130,7 +130,7 @@ export default function Navbar() {
             </Link>
           </div>
 
-          <div className="flex items-center justify-between px-4 pt-3 border-t border-[#16181d] text-sm font-medium">
+          <div className="flex items-center justify-center gap-8 px-4 pt-3 border-t border-[#16181d] text-sm font-medium">
             <Link
               href="/my-plan"
               className="flex items-center gap-2 text-gray-300"
